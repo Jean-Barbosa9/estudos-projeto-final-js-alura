@@ -40,15 +40,19 @@ var game = function(sprite) {
     sprite.nextFrame()
   };
 
+  var reStart = function() {
+    setStep(1);
+    $('ul.lacunas').html('')
+    sprite.reset();
+  };
+
   var message = function() {
     if(hits == secret.length) {
-      setStep(1);
-      sprite.reset();
+      reStart()
       alert('Parabéns, você completou o jogo com sucesso!');
     }
     if(sprite.isFinished()) {
-      setStep(1);
-      sprite.reset();
+      reStart()
       alert('Infelizmente não foi desta vez, mas te desejo mais sorte na próxima tentativa! A palavra era '+secret);
     };
   };

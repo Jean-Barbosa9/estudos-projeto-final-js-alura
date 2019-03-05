@@ -19,7 +19,7 @@ function createSprite(jqSelector) {
     reset: function() {
       var classList = sprite.selectedElement.attr('class').split(/\s+/)
       var regex = /frame\d/
-      $('ul.lacunas').html('')
+
       if(classList.length > 1) {
         $(classList).each(function(index,el){
           if(regex.test(el)) sprite.selectedElement.removeClass(el.match(regex)[0])
