@@ -17,12 +17,14 @@ function createSprite(jqSelector) {
     },
 
     reset: function() {
-      var classList = sprite.selectedElement.attr('class').split('/\s+/')
+      var classList = sprite.selectedElement.attr('class').split(/\s+/)
       var regex = /frame\d/
-      $(classList).each(function(){
-        var thisClass = this.match(regex)[0]
-        if(regex.test(this)) sprite.selectedElement.removeClass(thisClass)
-      })
+      $('ul.lacunas').html('')
+      if(classList.length > 1) {
+        $(classList).each(function(index,el){
+          if(regex.test(el)) sprite.selectedElement.removeClass(el.match(regex)[0])
+        })
+      }
     },
 
     isFinished: function() {
