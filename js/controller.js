@@ -17,9 +17,9 @@ var createController = function(game) {
   };
 
   // faz a associação do evento keypress para capturar a entrada do usuário toda vez que ele teclar ENTER
-  var init = function () {
+  var init = function() {
 
-    $('form').submit(function(event) {
+    $('form').on('submit', function(event) {
       event.preventDefault()
       switch (game.getEtapa()) {
         case 1:

@@ -29,22 +29,12 @@
     <script type='text/javascript' src='js/sprite.js'></script>
     <script type='text/javascript' src='js/jogo.js'></script>
     <script type='text/javascript' src='js/controller.js'></script>
-    <!-- <script>
-      var counter = 1
-
-      //Deverá retornar um objeto que selecionará o elemento sprite via JQuery, a partir do seletor passado no parâmetro e ter um método chamado nextFrame que irá manipular a classe do objeto selecionado
-      var sprite = createSprite('.sprite')
-
-      //Deverá desenhar toda a sequência de sprites, como forma de teste. Acho que vale parar o set interval, quando atingir o último sprite
-      var auto = setInterval(function(){
-        counter++
-
-        sprite.nextFrame()
-
-        if (counter > 9) {
-          clearInterval(auto)
-        }
-      }, 500)
-    </script> -->
+    <script>
+      createController(
+        game(
+          createSprite('.sprite')
+          )
+      );
+    </script>
   </body>
 </html>
