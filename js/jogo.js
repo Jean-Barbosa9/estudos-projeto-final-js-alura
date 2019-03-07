@@ -2,7 +2,7 @@ var game = function(sprite) {
   var secret = '', gap = [], step = 1, hits = 0;
   var inputs = []; //TODO: Colocar uma validação para verificar se o usuário já chutou essa opção antes, para não correr o risco de ser punido por estar chutando a mesma opção novamente.
 
-  var printGap = function() {
+  var printGaps = function() {
     $(gap).each(function(){
       $('ul.lacunas').append('<li class="lacuna"></li>')
     });
@@ -10,7 +10,6 @@ var game = function(sprite) {
 
   var setGap = function() {
     gap = Array(secret.length).fill('')
-    printGap()
   };
 
   var setStep = function(n) {
