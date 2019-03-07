@@ -40,25 +40,45 @@ var game = function(sprite) {
     sprite.nextFrame()
   };
 
+  var won = function() {
+    return hits == secret.length
+  };
+
+  var lost = function() {
+    return sprite.isFinished()
+  };
+
+  var wonOrLost = function() {
+    return won() || lost()
+  };
+
   var reStart = function() {
     setStep(1);
-    $('ul.lacunas').html('')
+    gap = [];
+    secret = '';
+    hits = 0;
+    $('ul.lacunas').html('');
     sprite.reset();
   };
 
   var message = function() {
-    if(hits == secret.length) {
-      reStart()
-      alert('Parabéns, você completou o jogo com sucesso!');
+    if(won()) {
+      setTimeout(function(){
+        alert('Parabéns, você completou o jogo com sucesso!');
+        reStart()
+      },500)
+
     }
-    if(sprite.isFinished()) {
-      reStart()
-      alert('Infelizmente não foi desta vez, mas te desejo mais sorte na próxima tentativa! A palavra era '+secret);
+    if(lost()) {
+      setTimeout(function(){
+        alert('Infelizmente não foi desta vez, mas te desejo mais sorte na próxima tentativa! A palavra era '+secret);
+        reStart()
+      },500)
     };
   };
 
   var processInput = function(guessWhat) {
-    var errors = 0, input = guessWhat.toUpperCase();
+    var input = guessWhat.toUpperCase(), errors = 0;
 
     for(var i=0, len=secret.length;i<len;i++) {
       if(secret[i] == input) {
@@ -76,8 +96,6 @@ var game = function(sprite) {
 
     message()
   };
-
-
 
   return {
     setSecret: setSecret,
